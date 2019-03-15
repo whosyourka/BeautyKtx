@@ -18,12 +18,6 @@ android {
 
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     testOptions {
         unitTests.returnDefaultValues = true
     }
@@ -33,12 +27,17 @@ android {
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.1.0-alpha04'
+//    //语言
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    implementation 'androidx.core:core-ktx:1.1.0-alpha05'
+//
+//
+//    //android 自带
+//    implementation 'androidx.appcompat:appcompat:1.0.2'
+//    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
+    //测试
     //junit
     testImplementation 'junit:junit:4.12'
     //robolectric 版本（sdk23需导入opengl-apk）
@@ -51,8 +50,6 @@ dependencies {
     implementation "org.powermock:powermock-module-junit4-rule:1.7.3"
     implementation "org.powermock:powermock-api-mockito2:1.7.3" //注意这里是mockito2
     implementation "org.powermock:powermock-classloading-xstream:1.7.3"
-
-
 
     //as自带（as3.2自带0.5），导入最新的和as自带的espresso自动化插件有问题
     //androidTestCompile 'com.android.support.test:runner:0.5'
@@ -71,4 +68,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-idling-resource:3.1.1"
     // Set this dependency to build and run UI Automator tests
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+
+    implementation rootProject.ext.dependencies["workmanager"]
 }

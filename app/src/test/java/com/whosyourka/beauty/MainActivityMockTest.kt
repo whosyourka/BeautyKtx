@@ -33,4 +33,11 @@ class MainActivityMockTest{
         list.last()
         verify(list).last()
     }
+
+
+
+    @Test
+    fun testWorkManager(){
+
+    }
 }
