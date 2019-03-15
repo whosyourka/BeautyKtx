@@ -5,7 +5,7 @@ ext {
             minSdkVersion    : 21,
             targetSdkVeersion: 27,
     ]
-    def work_version = "1.0.0-beta05"
+    def work_version = "2.0.0-rc01"
     dependencies = [
             "rxandroid"         : 'io.reactivex.rxjava2:rxjava:2.1.0',
             "rxjava"            : 'io.reactivex.rxjava2:rxandroid:2.0.1',
@@ -41,9 +41,10 @@ ext {
             "kotlin"       : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
 //            "test"           : 'test',
 
-            "workmanager"       : "android.arch.work:work-runtime:$work_version",
-            "workmanagerRx"       : "android.arch.work:work-rxjava2:$work_version",
-            "workmanagerTest"       : "android.arch.work:work-testing:$work_version"
+            "workmanagerjava"       : "androidx.work:work-runtime:$work_version",
+            "workmanagerKotln"       : "androidx.work:work-runtime-ktx:$work_version",
+            "workmanagerRx"       : "androidx.work:work-rxjava2:$work_version",
+            "workmanagerTest"       : "androidx.work:work-testing:$work_version"
     ]
 
     appVersionCode = 1

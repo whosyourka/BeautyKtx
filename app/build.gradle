@@ -37,14 +37,13 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //语言
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api 'androidx.core:core-ktx:1.1.0-alpha05'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.1.0-alpha05'
 
 
     //android 自带
-    api 'androidx.appcompat:appcompat:1.0.2'
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
-
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     //测试
     //junit
@@ -55,10 +54,10 @@ dependencies {
     //mockito
     implementation "org.mockito:mockito-core:2.8.9"
     //powermockito  这个要和mockito一一对应
-    implementation "org.powermock:powermock-module-junit4:1.7.3"
-    implementation "org.powermock:powermock-module-junit4-rule:1.7.3"
-    implementation "org.powermock:powermock-api-mockito2:1.7.3" //注意这里是mockito2
-    implementation "org.powermock:powermock-classloading-xstream:1.7.3"
+//    implementation "org.powermock:powermock-module-junit4:1.7.3"
+//    implementation "org.powermock:powermock-module-junit4-rule:1.7.3"
+//    implementation "org.powermock:powermock-api-mockito2:1.7.3" //注意这里是mockito2
+//    implementation "org.powermock:powermock-classloading-xstream:1.7.3"
 
     //as自带（as3.2自带0.5），导入最新的和as自带的espresso自动化插件有问题
     //androidTestCompile 'com.android.support.test:runner:0.5'
@@ -78,9 +77,10 @@ dependencies {
     // Set this dependency to build and run UI Automator tests
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
 
-
+//    implementation project(':commonlibrary')
     //其他包
-    api rootProject.ext.dependencies["workmanager"]
-    api rootProject.ext.dependencies["workmanagerRx"]
+    implementation rootProject.ext.dependencies["workmanagerjava"]
+    implementation rootProject.ext.dependencies["workmanagerKotln"]
+    implementation rootProject.ext.dependencies["workmanagerRx"]
 //    androidTestImplementation  rootProject.ext.dependencies["workmanagerTest"]
 }
