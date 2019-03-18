@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.whosyourka.beauty"
         minSdkVersion 21
@@ -82,5 +85,7 @@ dependencies {
     implementation rootProject.ext.dependencies["workmanagerjava"]
     implementation rootProject.ext.dependencies["workmanagerKotln"]
     implementation rootProject.ext.dependencies["workmanagerRx"]
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 //    androidTestImplementation  rootProject.ext.dependencies["workmanagerTest"]
+
 }
