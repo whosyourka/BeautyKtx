@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="viewmodel"
-                type="com.whosyourka.beauty.pitureList.model.ViewModel"/>
+                type="com.whosyourka.beauty.pitureList.model.PitureListModle"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
