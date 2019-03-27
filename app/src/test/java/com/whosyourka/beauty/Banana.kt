@@ -1,5 +1,10 @@
 package com.whosyourka.beauty
 
-class Banana {
-
+/**
+ * Created by HMC on 2019/3/27
+ */
+object Banana {
+    fun getColor():String{
+        return "红色"
+    }
 }

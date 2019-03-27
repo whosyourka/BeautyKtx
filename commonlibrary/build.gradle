@@ -72,6 +72,7 @@ dependencies {
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
 
     //其他包
+    //workmanager
     implementation rootProject.ext.dependencies["workmanagerjava"]
     implementation rootProject.ext.dependencies["workmanagerKotln"]
     implementation rootProject.ext.dependencies["workmanagerRx"]
