@@ -56,12 +56,12 @@ dependencies {
     testImplementation "org.robolectric:robolectric:3.8"
     testImplementation 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
     //mockito
-    implementation "org.mockito:mockito-core:2.8.9"
+    testImplementation "org.mockito:mockito-core:2.8.9"
     //powermockito  这个要和mockito一一对应
-    implementation "org.powermock:powermock-module-junit4:1.7.3"
-    implementation "org.powermock:powermock-module-junit4-rule:1.7.3"
-    implementation "org.powermock:powermock-api-mockito2:1.7.3" //注意这里是mockito2
-    implementation "org.powermock:powermock-classloading-xstream:1.7.3"
+    testImplementation "org.powermock:powermock-module-junit4:1.7.3"
+    testImplementation "org.powermock:powermock-module-junit4-rule:1.7.3"
+    testImplementation "org.powermock:powermock-api-mockito2:1.7.3" //注意这里是mockito2
+    testImplementation "org.powermock:powermock-classloading-xstream:1.7.3"
 
     //as自带（as3.2自带0.5），导入最新的和as自带的espresso自动化插件有问题
     //androidTestCompile 'com.android.support.test:runner:0.5'
