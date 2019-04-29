@@ -56,7 +56,7 @@ ext {
 //    appVersionGitName = appVersionName + "." + gitVersion
 
     //设置对外部可以使用的输出函数
-    setDefaultCon = this.&setDefaultCon
+//    setDefaultCon = this.&setDefaultCon
     addBuildTimeListener = this.&addBuildTimeListener
 
     setApkName = this.&setApkName //todo 具体项目具体修改
@@ -131,54 +131,54 @@ def setDefaultCon(android) {
     }
 }
 
-/**
- * 配置构建时间
- * @param gradle
- * @return
- */
-def addBuildTimeListener(gradle) {
-    gradle.addListener(new BuildTimeListener())
-}
-
-class BuildTimeListener implements TaskExecutionListener, BuildListener {
-    private Clock clock
-    private times = []
-
-    @Override
-    void beforeExecute(Task task) {
-        clock = new org.gradle.util.Clock()
-    }
-
-    @Override
-    void afterExecute(Task task, TaskState taskState) {
-        def ms = clock.timeInMs
-        times.add([ms, task.path])
-
-        //task.project.logger.warn "${task.path} spend ${ms}ms"
-    }
-
-    @Override
-    void buildFinished(BuildResult result) {
-        println "Task spend time:"
-        for (time in times) {
-            if (time[0] >= 50) {
-                printf "%7sms  %s\n", time
-            }
-        }
-    }
-
-    @Override
-    void buildStarted(Gradle gradle) {}
-
-    @Override
-    void projectsEvaluated(Gradle gradle) {}
-
-    @Override
-    void projectsLoaded(Gradle gradle) {}
-
-    @Override
-    void settingsEvaluated(Settings settings) {}
-}
+///**
+// * 配置构建时间
+// * @param gradle
+// * @return
+// */
+//def addBuildTimeListener(gradle) {
+//    gradle.addListener(new BuildTimeListener())
+//}
+//
+//class BuildTimeListener implements TaskExecutionListener, BuildListener {
+//    private Clock clock
+//    private times = []
+//
+//    @Override
+//    void beforeExecute(Task task) {
+//        clock = new org.gradle.util.Clock()
+//    }
+//
+//    @Override
+//    void afterExecute(Task task, TaskState taskState) {
+//        def ms = clock.timeInMs
+//        times.add([ms, task.path])
+//
+//        //task.project.logger.warn "${task.path} spend ${ms}ms"
+//    }
+//
+//    @Override
+//    void buildFinished(BuildResult result) {
+//        println "Task spend time:"
+//        for (time in times) {
+//            if (time[0] >= 50) {
+//                printf "%7sms  %s\n", time
+//            }
+//        }
+//    }
+//
+//    @Override
+//    void buildStarted(Gradle gradle) {}
+//
+//    @Override
+//    void projectsEvaluated(Gradle gradle) {}
+//
+//    @Override
+//    void projectsLoaded(Gradle gradle) {}
+//
+//    @Override
+//    void settingsEvaluated(Settings settings) {}
+//}
 
 /**
  * 设置默认签名
