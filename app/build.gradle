@@ -90,7 +90,8 @@ dependencies {
     implementation rootProject.ext.dependencies["workmanagerjava"]
     implementation rootProject.ext.dependencies["workmanagerKotln"]
     implementation rootProject.ext.dependencies["workmanagerRx"]
-
 //    androidTestImplementation  rootProject.ext.dependencies["workmanagerTest"]
 
+    ext.leakcarry_version = "2.0-alpha-1"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcarry_version"
 }
