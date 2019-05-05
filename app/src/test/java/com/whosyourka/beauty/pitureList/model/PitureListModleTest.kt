@@ -14,6 +14,6 @@ class PitureListModleTest : BasePresenterTest() {
     val mModel = PitureListModle()
     @Test
     fun getPitureListData() {
-        Assert.assertEquals(mModel.name, "myPiture")
+        Assert.assertEquals(mModel.getPitureListData(), "myPiture")
     }
 }
