@@ -7,4 +7,10 @@ import androidx.lifecycle.ViewModel
  */
 class PitureListModle {
     var name: String? = null
+
+    fun getPitureListData(model: PitureListModle): PitureListModle {
+        var pitureListModle = PitureListModle()
+        pitureListModle.name = "myPiture"
+        return pitureListModle
+    }
 }

@@ -14,18 +14,14 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 
-@PrepareForTest(Banana::class)
 @RunWith(RobolectricTestRunner::class)
 @Config(constants = BuildConfig::class)
 @PowerMockIgnore("org.powermock.*", "org.mockito.*", "org.robolectric.*", "android.*", "androidx.*" )
-class MainActivityPowerMockTest{
+class BasePowerMockTest{
     @Rule
     @JvmField
     val rule = PowerMockRule()
     @Test
     fun testInstrumentTest(){
-//        PowerMockito.mockStatic(Banana::class.java)
-//        PowerMockito.`when`(Banana.getColor()).thenReturn("绿色")
-//        Assert.assertEquals(Banana.getColor(), "绿色")
     }
 }
