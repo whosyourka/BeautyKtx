@@ -6,6 +6,7 @@ import android.content.Context
 
 
 import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.MockitoAnnotations
 import org.powermock.core.classloader.annotations.PowerMockIgnore
@@ -42,5 +43,9 @@ open class BasePresenterTest {
         get() = RuntimeEnvironment.application
 
     open fun setup() {
+    }
+
+    @Test
+    fun testInstrumentTest(){
     }
 }
