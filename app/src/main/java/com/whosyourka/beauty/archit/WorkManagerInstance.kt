@@ -1,6 +1,5 @@
 package com.whosyourka.beauty.archit
 
-import android.content.Context
 import androidx.work.*
 import java.util.concurrent.TimeUnit
 
@@ -19,12 +18,12 @@ class WorkManagerInstance private constructor() {
 
     fun enqueue() {
         //定期任务
-        val pullRequest = PeriodicWorkRequestBuilder<CommonWorker>(24, TimeUnit.SECONDS)
+        val pullRequest = PeriodicWorkRequestBuilder<MyCommonWorker>(24, TimeUnit.SECONDS)
             .addTag("pullRequest")
             .setConstraints(Constraints.Builder().setRequiresCharging(true).build())
             //设置在某种情况下运行
             .setInputData(Data.Builder().putInt("key_accept_bg_work", 1).build()).build()
-        val pullRequest1 = OneTimeWorkRequestBuilder<CommonWorker>()
+        val pullRequest1 = OneTimeWorkRequestBuilder<MyCommonWorker>()
             .addTag("pullRequest1")
             //设置在某种情况下运行
             .setConstraints(Constraints.Builder().setRequiresCharging(true).build())

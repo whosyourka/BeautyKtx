@@ -7,7 +7,7 @@ import androidx.work.WorkerParameters
 /**
  * Created by HMC on 2019/5/7
  **/
-class CommonWorker(appContext: Context, workerParams: WorkerParameters)
+class MyCommonWorker(appContext: Context, workerParams: WorkerParameters)
     : Worker(appContext, workerParams) {
     var retry = false;
     override fun doWork(): Result {
