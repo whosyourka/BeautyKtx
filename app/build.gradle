@@ -1,6 +1,45 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+//注意点：executionData是测试的exec或ec后缀报告  classDirectories包含的编译后路径   sourceDirectories 为源码路径
+apply plugin: 'jacoco'
+task jacocoTestReport(type: JacocoReport) {
+
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+
+    def coverageSourceDirs = [
+            '../app/src/main/java'
+    ]
+    sourceDirectories = files(coverageSourceDirs)
+
+    def excludeClasses = ['**/R*.class',
+                          '**/*$InjectAdapter.class',
+                          '**/*$ModuleAdapter.class',
+                          '**/*$ViewInjector*.class',
+                          '**/BuildConfig.class'
+    ]
+    //编译后字节文件地址，看个人的路径是哪个
+    classDirectories = fileTree(dir: '../app/build/intermediates/classes/debug', excludes: excludeClasses)
+
+//    executionData = fileTree(dir: project.projectDir, includes:['**/*.exec', '**/*.ec'])
+//    android ec路径
+//    executionData = files("$buildDir/outputs/code-coverage/connected/flavors/TEST_IN/APOS A8 - 5.1.1-coverage.ec")
+    executionData = files("$buildDir/jacoco/testDebugUnitTest.exec")
+
+    doFirst {
+        new File("$buildDir/intermediates/classes/").eachFileRecurse { file ->
+            if (file.name.contains('$$')) {
+                file.renameTo(file.path.replace('$$', '$'))
+            }
+        }
+    }
+}
 
 android {
     compileSdkVersion 28
