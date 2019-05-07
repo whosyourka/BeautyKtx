@@ -18,27 +18,35 @@ task jacocoTestReport(type: JacocoReport) {
     ]
     sourceDirectories = files(coverageSourceDirs)
 
-    def excludeClasses = ['**/R*.class',
+    def fileFilter = ['**/R*.class',
                           '**/*$InjectAdapter.class',
                           '**/*$ModuleAdapter.class',
                           '**/*$ViewInjector*.class',
                           '**/BuildConfig.class'
     ]
     //编译后字节文件地址，看个人的路径是哪个
-    classDirectories = fileTree(dir: '../app/build/intermediates/classes/debug', excludes: excludeClasses)
+//    classDirectories = fileTree(dir: '../app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/', excludes: excludeClasses)
+    def javaDebugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug/", excludes: fileFilter) //we use "debug" build type for test coverage (can be other)
+    def kotlinDebugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/debug/", excludes: fileFilter)
+    classDirectories = files([javaDebugTree, kotlinDebugTree]) // we need to target both java and kotlin build folder
 
 //    executionData = fileTree(dir: project.projectDir, includes:['**/*.exec', '**/*.ec'])
 //    android ec路径
 //    executionData = files("$buildDir/outputs/code-coverage/connected/flavors/TEST_IN/APOS A8 - 5.1.1-coverage.ec")
     executionData = files("$buildDir/jacoco/testDebugUnitTest.exec")
 
-    doFirst {
-        new File("$buildDir/intermediates/classes/").eachFileRecurse { file ->
-            if (file.name.contains('$$')) {
-                file.renameTo(file.path.replace('$$', '$'))
-            }
-        }
-    }
+//    doFirst {
+//        new File("$buildDir/intermediates/javac/debug/").eachFileRecurse { file ->
+//            if (file.name.contains('$$')) {
+//                file.renameTo(file.path.replace('$$', '$'))
+//            }
+//        }
+//        new File("$buildDir/tmp/kotlin-classes/debug/").eachFileRecurse { file ->
+//            if (file.name.contains('$$')) {
+//                file.renameTo(file.path.replace('$$', '$'))
+//            }
+//        }
+//    }
 }
 
 android {
@@ -63,12 +71,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            //资源压缩
-            shrinkResources true
-            minifyEnabled true
-            //Android 插件压缩器不会对您的代码进行混淆处理或优化
-            useProguard false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testCoverageEnabled = true
+//            //资源压缩
+//            testCoverageEnabled true
+//            shrinkResources false
+//            minifyEnabled false
+//            //Android 插件压缩器不会对您的代码进行混淆处理或优化
+//            useProguard false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     testOptions {
