@@ -7,7 +7,7 @@ import org.junit.Test
 /**
  * Created by HMC on 2019/5/5
  */
-class PitureListModleTest : BasePresenterTest() {
+class PitureListModleTest {
     val mModel = PitureListModle()
     @Test
     fun getPitureListData() {
